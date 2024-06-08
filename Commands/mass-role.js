@@ -6,8 +6,10 @@ module.exports = {
         .setName('mass-role')
         .setDescription('Ajoute/retire un rôle à tous les utilisateurs.')
         .addStringOption(option => option.setName('action').setDescription('Action to perform (add/remove)').setRequired(true)
-            .addChoice('Ajoute', 'add')
-            .addChoice('Retire', 'remove')
+            .addChoices(
+                { name:'Ajoute', value: 'add' },
+                { name: 'Retire', value: 'remove' }
+            )
         )
         .addRoleOption(option => option.setName('role').setDescription('Le rôle à ajouter/retirer').setRequired(true)),
     async execute(interaction, config) {
